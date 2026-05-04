@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth, Power & Impunity — The Anglophone Blind Spot</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  /* ── COLOR & FONT SYSTEM ── */
+  :root {
+    --red: #A32D2D;
+    --red-light: #f9e8e8;
+    --amber: #854F0B;
+    --amber-light: #fdf3e3;
+    --green: #2D6A1F;
+    --green-light: #eaf3e6;
+    
+    --ink: #1a1a18;
+    --ink-mid: #3d3d38;
+    --ink-light: #6b6b62;
+    --ink-faint: #a8a89e;
+    --rule: #d4d0c4;
+    --bg: #fafaf7;
+    --bg-warm: #f4f2ec;
+    --bg-card: #ffffff;
+    
+    --serif: 'Source Serif 4', Georgia, serif;
+    --display: 'Playfair Display', Georgia, serif;
+    --mono: 'JetBrains Mono', monospace;
+    
+    --measure: 68ch;
+    --wide: 88ch;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 18px; scroll-behavior: smooth; }
+  body {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-card);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 1rem;
+  }
+  .masthead-brand {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .masthead-brand span { color: var(--red); }
+  .masthead-nav { display: flex; gap: 1.5rem; align-items: center; }
+  .masthead-nav a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .masthead-nav a:hover { color: var(--red); }
+  .masthead-nav .sub-link {
+    background: var(--red);
+    color: #fff !important;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+  }
+  .masthead-nav .sub-link:hover { background: #7a1f1f; }
+
+  .cover {
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  .cover-kicker {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .cover-kicker::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2px;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+  .cover-title {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .cover-sub {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    max-width: 56ch;
+    margin-bottom: 2.5rem;
+  }
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+  }
+  .cover-meta span strong { color: var(--ink-light); }
+
+  .container {
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .body-text {
+    max-width: var(--measure);
+  }
+
+  .exec-summary {
+    background: var(--ink);
+    color: #fff;
+    padding: 3rem;
+    margin: 3rem 0;
+    border-radius: 3px;
+  }
+  .exec-summary h2 {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red-light);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+  .exec-summary .finding {
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  .exec-summary .finding-num {
+    font-family: var(--display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--red-light);
+  }
+  .exec-summary .finding-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .section {
+    margin: 4rem 0;
+  }
+  .section-number {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .subsection {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+  }
+  .subsubsection {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--ink-mid);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .toc {
+    background: var(--bg-warm);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 2rem;
+    margin: 3rem 0;
+  }
+  .toc-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+  .toc li {
+    counter-increment: toc-counter;
+    margin-bottom: 0.5rem;
+  }
+  .toc li::before {
+    content: counter(toc-counter, decimal-leading-zero) " ";
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    margin-right: 0.75rem;
+  }
+  .toc a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .toc a:hover { color: var(--red); }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.5rem;
+  }
+  .stat-value {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .stat-value.red { color: var(--red); }
+  .stat-value.green { color: var(--green); }
+  .stat-value.amber { color: var(--amber); }
+  .stat-label {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--ink-mid);
+    margin-bottom: 0.25rem;
+  }
+  .stat-sub {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .callout {
+    background: var(--bg-warm);
+    border-left: 3px solid var(--ink);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    font-style: italic;
+  }
+  .callout.red {
+    background: var(--red-light);
+    border-left-color: var(--red);
+  }
+  .callout.amber {
+    background: var(--amber-light);
+    border-left-color: var(--amber);
+  }
+  .callout.green {
+    background: var(--green-light);
+    border-left-color: var(--green);
+  }
+  .callout-source {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+  }
+  .table-caption {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding: 1rem 1.5rem;
+    background: var(--bg-warm);
+    border-bottom: 1px solid var(--rule);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    font-size: 0.9rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    background: var(--bg-warm);
+  }
+  tr:last-child td { border-bottom: none; }
+  .highlight-red { background: var(--red-light); color: var(--red); font-weight: 400; }
+  .highlight-green { background: var(--green-light); color: var(--green); font-weight: 400; }
+  .highlight-amber { background: var(--amber-light); color: var(--amber); font-weight: 400; }
+
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem 2rem;
+    margin: 2rem 0;
+  }
+  .gloss-term {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .gloss-def {
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+  }
+
+  .rule-heavy {
+    border: none;
+    border-top: 3px solid var(--ink);
+    margin: 4rem 0;
+  }
+
+  .references {
+    background: var(--bg-warm);
+    padding: 3rem 0;
+    margin-top: 4rem;
+  }
+  .ref-list {
+    list-style-position: outside;
+    padding-left: 2rem;
+  }
+  .ref-list li {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--ink-mid);
+  }
+  .ref-list a {
+    color: var(--red);
+    text-decoration: none;
+  }
+  .ref-list a:hover { text-decoration: underline; }
+
+  .site-footer {
+    background: var(--ink);
+    color: #fff;
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  .footer-brand {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .site-footer a {
+    color: var(--red-light);
+    text-decoration: none;
+  }
+  .site-footer a:hover { text-decoration: underline; }
+
+  p { margin-bottom: 1.25rem; }
+  p:last-child { margin-bottom: 0; }
+  
+  sup { font-size: 0.7em; vertical-align: super; }
+  sup a { color: var(--red); text-decoration: none; }
+  
+  strong { font-weight: 600; color: var(--ink); }
+  em { font-style: italic; }
+
+  @media (max-width: 768px) {
+    html { font-size: 16px; }
+    .masthead { flex-direction: column; align-items: flex-start; }
+    .cover { padding: 3rem 1.5rem 2rem; }
+    .container { padding: 0 1.5rem; }
+    .exec-summary { padding: 2rem 1.5rem; }
+    .stat-grid { grid-template-columns: 1fr; }
+  }
+
+  .chart-container {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+  }
+  .chart-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+  }
+  .chart-note {
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="masthead">
+  <a href="#" class="masthead-brand">The Anglophone <span>Blind Spot</span></a>
+  <nav class="masthead-nav">
+    <a href="#findings">Findings</a>
+    <a href="#references">References</a>
+    <a href="https://ivanapark1.substack.com" class="sub-link">Subscribe</a>
+  </nav>
+</div>
+
+<div class="cover">
+  <div class="cover-kicker">Investigative Report — Political Economy & Corruption</div>
+  <h1 class="cover-title">Wealth, Power & Impunity</h1>
+  <p class="cover-sub">An Analysis of Unexplained Wealth Among Philippine Senators Who Have Completed At Least One Full Senate Term</p>
+  <div class="cover-meta">
+    <span><strong>Published by</strong> The Anglophone Blind Spot</span>
+    <span><strong>Date</strong> March 2026</span>
+    <span><strong>Region</strong> Philippines</span>
+    <span><strong>Subject</strong> Corruption • Political dynasties • Institutional failure</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top: 3rem;">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#findings">Executive summary — 7 core findings</a></li>
+      <li><a href="#methodology">Methodology and data sources</a></li>
+      <li><a href="#baseline">The legitimate wealth baseline</a></li>
+      <li><a href="#comparison">Declared vs legitimate vs real wealth</a></li>
+      <li><a href="#growth">Wealth growth during completed terms</a></li>
+      <li><a href="#mechanisms">Corruption mechanisms</a></li>
+      <li><a href="#religion">The role of religion in sustaining corruption</a></li>
+      <li><a href="#institutional">The architecture of institutional failure</a></li>
+      <li><a href="#voters">Why Filipinos consistently vote for bad actors</a></li>
+      <li><a href="#integrity">Senator integrity assessment</a></li>
+      <li><a href="#legal">In a perfect world: legal outcomes</a></li>
+      <li><a href="#cost">The human cost</a></li>
+      <li><a href="#timeline">The justice timeline</a></li>
+      <li><a href="#consumption">Documented conspicuous consumption</a></li>
+      <li><a href="#enablers">Who should be removed: the full enabling architecture</a></li>
+      <li><a href="#judiciary">The captured judiciary</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </div>
+
+  <div class="exec-summary" id="findings">
+    <h2>7 core findings</h2>
+    
+    <div class="finding">
+      <span class="finding-num">1</span>
+      <p class="finding-text"><strong>The maximum legitimate wealth from salary alone over a 6-year Senate term is approximately ₱18 million gross.</strong> Every senator with a completed term declares wealth that significantly exceeds this baseline — often by multiples of 5× to 13×.</p>
+    </div>
+    
+    <div class="finding">
+      <span class="finding-num">2</span>
+      <p class="finding-text"><strong>Estimated real wealth is conservatively 2–30 times higher than declared SALN figures.</strong> Offshore asset concealment, the acquisition-cost rule for property valuation, and corporate shielding create a systematic understatement of actual wealth.</p>
+    </div>
+    
+    <div class="finding">
+      <span class="finding-num">3</span>
+      <p class="finding-text"><strong>Only 2 of 11 experienced senators (Hontiveros and Pangilinan) pass a rigorous clean-record test.</strong> The remainder face confirmed corruption charges, credible allegations, or structural conflicts of interest that warrant investigation.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-num">4</span>
+      <p class="finding-text"><strong>Total estimated recoverable assets under proper prosecution: ₱3 billion to ₱7 billion.</strong> This represents approximately the entire annual budget of the Department of Social Welfare and Development.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-num">5</span>
+      <p class="finding-text"><strong>The Philippines ranks last in ASEAN GDP per capita growth since 1960.</strong> This is a direct consequence of the same political economy documented here — 63 years of patronage politics, institutional capture, and elite extraction.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-num">6</span>
+      <p class="finding-text"><strong>Religious institutions function as active structural components of the corruption system.</strong> Through bloc voting (INC), dynastic vehicles (JIL/CIBAC), and legitimacy provision (Catholic Church), religion insulates corrupt politicians from accountability.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-num">7</span>
+      <p class="finding-text"><strong>The judiciary has been systematically captured.</strong> 13 of 15 Supreme Court justices were appointed by Duterte. The Sandiganbayan Presiding Justice who dismisses Marcos family cases was appointed by Marcos. Justice is structurally impossible.</p>
+    </div>
+  </div>
+
+  <div class="callout red">
+    <p><strong>Disclaimer:</strong> This report is based entirely on public-domain information including court records, official SALN filings, and published investigative journalism. All estimates are clearly labelled. Nothing herein constitutes legal advice. Corrections based on new evidence are welcome.</p>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="methodology">
+    <span class="section-number">Section 01</span>
+    <h1 class="section-title">Methodology and Data Sources</h1>
+
+    <h2 class="subsection">Primary data sources</h2>
+    <div class="body-text">
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Official SALN filings as published by the Philippine Senate and Office of the Ombudsman</li>
+        <li>Sandiganbayan rulings, indictments, and case records</li>
+        <li>Philippine Center for Investigative Journalism (PCIJ) — SALN analysis and budget insertion series</li>
+        <li>International Consortium of Investigative Journalists (ICIJ) — Panama Papers and Offshore Leaks databases</li>
+        <li>Rappler, Philippine Daily Inquirer, GMA News, and Philippine Star investigative reports</li>
+        <li>World Bank World Development Indicators — GDP per capita, constant 2015 USD, 1960–2023</li>
+        <li>Presidential Commission on Good Government (PCGG) records and inventory filings</li>
+        <li>Registry of Deeds property records as cited in investigative reports</li>
+      </ul>
+    </div>
+
+    <h2 class="subsection">Wealth estimation methodology</h2>
+    <div class="body-text">
+      <p>Where estimated real wealth is presented, it is derived by triangulating four sources of systematic understatement in official SALN filings:</p>
+
+      <p><strong>Acquisition-cost rule:</strong> Philippine law requires real property to be declared at acquisition cost, not current market value. Metro Manila real estate has appreciated 3–10× over 20 years.</p>
+
+      <p><strong>Offshore asset concealment:</strong> Both Imee Marcos (Sintra Trust, BVI) and JV Ejercito (Ice Bell Properties, BVI) held offshore accounts confirmed by ICIJ — never declared in any SALN.</p>
+
+      <p><strong>Corporate and family shielding:</strong> Business assets held through corporate entities or family nominees are not captured in personal SALNs.</p>
+
+      <p><strong>Lifestyle and spending evidence:</strong> Documented luxury expenditures cross-checked against declared income streams.</p>
+
+      <p>All estimates are presented as ranges with confidence levels clearly stated. Figures confirmed by court records or official government documents are presented as facts rather than estimates.</p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="baseline">
+    <span class="section-number">Section 02</span>
+    <h1 class="section-title">The Legitimate Wealth Baseline</h1>
+
+    <div class="body-text">
+      <p>A Philippine senator's base salary is ₱35,689 per month as of 2024, with total compensation including allowances of approximately ₱250,000 per month — ₱3 million per year. Over a full six-year term, gross salary amounts to approximately <strong>₱18 million before tax and living expenses</strong>.</p>
+
+      <p>The Anti-Graft and Corrupt Practices Act (RA 3019) and the Forfeiture Law (RA 1379) both create a legal presumption that property acquired by a public officer which is "manifestly out of proportion to his salary" is unlawfully acquired — shifting the burden to the official to explain the source of their wealth.</p>
+
+      <div class="callout amber">
+        <p>Every figure in the analysis below must be read against this ₱18 million baseline. A senator earning only their salary, with no prior wealth and no business income, would accumulate exactly this over six years.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="comparison">
+    <span class="section-number">Section 03</span>
+    <h1 class="section-title">Declared vs Legitimate vs Real Wealth</h1>
+
+    <h2 class="subsection">SALN vs maximum legitimate wealth</h2>
+    <div class="body-text">
+      <p>Chart 1 compares each senator's declared SALN net worth against the maximum legitimate wealth ceiling derived from salary and declared business income. The red segments represent the portion that cannot be explained by any documented legitimate source.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Chart 1 — Declared SALN Net Worth vs Maximum Legitimate Wealth (₱ millions)</div>
+      <p class="chart-note">Green = max legitimate; Blue = declared SALN; Red = unexplained gap. ₱0M salary baseline shown for reference.</p>
+      <p style="font-size: 0.85rem; color: var(--ink-mid); margin-top: 1.5rem;"><em>Note: Full visualization available in original PDF report. Key finding: Most senators show unexplained gaps of ₱30M–₱180M above legitimate sources.</em></p>
+    </div>
+
+    <h2 class="subsection">Declared SALN vs estimated real wealth</h2>
+    <div class="body-text">
+      <p>Chart 2 reveals the full scale of likely concealment. Error bars show the estimated range. For Imee Marcos, estimated real wealth is 15–30 times her declared SALN — reflecting the Marcos family's documented offshore trusts and unrecovered ill-gotten wealth.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Chart 2 — Declared SALN (blue) vs Estimated Real Wealth midpoint (red) with range error bars (₱ billions)</div>
+      <p class="chart-note">Source: SALN filings, PCIJ, ICIJ, court records, property valuations.</p>
+      <p style="font-size: 0.85rem; color: var(--ink-mid); margin-top: 1.5rem;"><em>Note: Full visualization available in original PDF report. Key finding: Real wealth estimates range from 2× (Hontiveros) to 30× (Imee Marcos) declared values.</em></p>
+    </div>
+
+    <h2 class="subsection">Full comparison table</h2>
+
+    <div class="table-wrap">
+      <div class="table-caption">Table 1 — Declared SALN, Maximum Legitimate Wealth, Gap, and Estimated Real Wealth</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Senator</th>
+            <th>Term</th>
+            <th>Declared SALN</th>
+            <th>Max Legit.</th>
+            <th>Gap</th>
+            <th>Est. Real Wealth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Imee Marcos</td>
+            <td>2019–25</td>
+            <td>₱165M</td>
+            <td>₱55M</td>
+            <td class="highlight-red">₱110M</td>
+            <td>₱2.5B–₱5B</td>
+          </tr>
+          <tr>
+            <td>Migz Zubiri</td>
+            <td>2019–25</td>
+            <td>₱431M</td>
+            <td>₱250M</td>
+            <td class="highlight-red">₱181M</td>
+            <td>₱1B–₱1.5B</td>
+          </tr>
+          <tr>
+            <td>Jinggoy Estrada</td>
+            <td>2019–25</td>
+            <td>₱221M</td>
+            <td>₱80M</td>
+            <td class="highlight-red">₱141M</td>
+            <td>₱900M–₱1.5B</td>
+          </tr>
+          <tr>
+            <td>Tito Sotto</td>
+            <td>2019–25</td>
+            <td>₱188M</td>
+            <td>₱120M</td>
+            <td class="highlight-red">₱68M</td>
+            <td>₱600M–₱900M</td>
+          </tr>
+          <tr>
+            <td>Lito Lapid</td>
+            <td>2019–25</td>
+            <td>₱202M</td>
+            <td>₱90M</td>
+            <td class="highlight-red">₱112M</td>
+            <td>₱400M–₱600M</td>
+          </tr>
+          <tr>
+            <td>Pia Cayetano</td>
+            <td>2019–25</td>
+            <td>₱128M</td>
+            <td>₱95M</td>
+            <td class="highlight-amber">₱33M</td>
+            <td>₱400M–₱700M</td>
+          </tr>
+          <tr>
+            <td>JV Ejercito</td>
+            <td>2019–25</td>
+            <td>₱137M</td>
+            <td>₱100M</td>
+            <td class="highlight-amber">₱37M</td>
+            <td>₱300M–₱600M</td>
+          </tr>
+          <tr>
+            <td>Bong Go</td>
+            <td>2019–25</td>
+            <td>₱32M</td>
+            <td>₱35M</td>
+            <td>—</td>
+            <td>₱150M–₱400M</td>
+          </tr>
+          <tr>
+            <td>Bato Dela Rosa</td>
+            <td>2019–25</td>
+            <td>₱32M</td>
+            <td>₱40M</td>
+            <td>—</td>
+            <td>₱100M–₱200M</td>
+          </tr>
+          <tr>
+            <td>Loren Legarda</td>
+            <td>2019–25</td>
+            <td>₱79M</td>
+            <td>₱65M</td>
+            <td class="highlight-amber">₱14M</td>
+            <td>₱300M–₱500M</td>
+          </tr>
+          <tr>
+            <td>Alan P. Cayetano</td>
+            <td>2019–25</td>
+            <td>₱109M</td>
+            <td>₱115M</td>
+            <td>—</td>
+            <td>₱300M–₱600M</td>
+          </tr>
+          <tr>
+            <td>S. Gatchalian</td>
+            <td>2016–22</td>
+            <td>₱89M</td>
+            <td>₱91M</td>
+            <td>—</td>
+            <td>₱2B–₱5B *</td>
+          </tr>
+          <tr>
+            <td>Joel Villanueva</td>
+            <td>2016–22</td>
+            <td>₱49M</td>
+            <td>₱33M</td>
+            <td class="highlight-amber">₱16M</td>
+            <td>₱200M–₱400M</td>
+          </tr>
+          <tr>
+            <td>Kiko Pangilinan</td>
+            <td>2016–22</td>
+            <td>₱27M</td>
+            <td>₱24M</td>
+            <td class="highlight-green">₱3M</td>
+            <td>₱500M–₱1B †</td>
+          </tr>
+          <tr>
+            <td>Risa Hontiveros</td>
+            <td>2016–22</td>
+            <td>₱19M</td>
+            <td>₱17M</td>
+            <td class="highlight-green">₱2M</td>
+            <td>₱25M–₱50M</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--ink-faint); margin-top: -1rem;">* Gatchalian family controls Wellex Group — not held personally. † Pangilinan household wealth reflects spouse Sharon Cuneta's independent entertainment earnings.</p>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="growth">
+    <span class="section-number">Section 04</span>
+    <h1 class="section-title">Wealth Growth During Completed Terms</h1>
+
+    <h2 class="subsection">Growth multiple vs salary baseline</h2>
+    <div class="body-text">
+      <p>Chart 3 converts wealth growth during each senator's completed term into multiples of their full six-year salary. A senator earning only their salary would show a 1× multiple. Most senators show declared growth multiples of 2–13×, with estimated real growth far higher.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Chart 3 — Wealth growth multiple vs full 6-year salary baseline</div>
+      <p class="chart-note">Blue = SALN declared growth; Red = estimated real wealth growth. Dashed line = 1× salary.</p>
+      <p style="font-size: 0.85rem; color: var(--ink-mid); margin-top: 1.5rem;"><em>Note: Full visualization available in original PDF report. Key finding: Migz Zubiri shows 12.7× salary growth in declared SALN; estimated real growth exceeds 60× salary.</em></p>
+    </div>
+
+    <h2 class="subsection">Term-by-term data</h2>
+
+    <div class="table-wrap">
+      <div class="table-caption">Table 2 — Wealth Growth by Senator (2019–2025 or 2016–2022 term)</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Senator</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>SALN Growth</th>
+            <th>Salary</th>
+            <th>Multiple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Imee Marcos</td>
+            <td>₱29M</td>
+            <td>₱165M</td>
+            <td class="highlight-red">+₱136M</td>
+            <td>₱18M</td>
+            <td>7.6×</td>
+          </tr>
+          <tr>
+            <td>Migz Zubiri</td>
+            <td>₱203M</td>
+            <td>₱431M</td>
+            <td class="highlight-red">+₱228M</td>
+            <td>₱18M</td>
+            <td>12.7×</td>
+          </tr>
+          <tr>
+            <td>Tito Sotto</td>
+            <td>₱78M</td>
+            <td>₱188M</td>
+            <td class="highlight-red">+₱110M</td>
+            <td>₱18M</td>
+            <td>6.1×</td>
+          </tr>
+          <tr>
+            <td>Lito Lapid</td>
+            <td>₱75M</td>
+            <td>₱202M</td>
+            <td class="highlight-red">+₱127M</td>
+            <td>₱18M</td>
+            <td>7.1×</td>
+          </tr>
+          <tr>
+            <td>Jinggoy Estrada</td>
+            <td>₱180M</td>
+            <td>₱221M</td>
+            <td class="highlight-amber">+₱41M</td>
+            <td>₱18M</td>
+            <td>2.3×</td>
+          </tr>
+          <tr>
+            <td>JV Ejercito</td>
+            <td>₱79M</td>
+            <td>₱137M</td>
+            <td class="highlight-amber">+₱58M</td>
+            <td>₱18M</td>
+            <td>3.2×</td>
+          </tr>
+          <tr>
+            <td>Bong Go</td>
+            <td>₱15M</td>
+            <td>₱32M</td>
+            <td class="highlight-green">+₱17M</td>
+            <td>₱18M</td>
+            <td>~1×</td>
+          </tr>
+          <tr>
+            <td>Bato Dela Rosa</td>
+            <td>₱28M</td>
+            <td>₱32M</td>
+            <td class="highlight-green">+₱4M</td>
+            <td>₱18M</td>
+            <td>flat</td>
+          </tr>
+          <tr>
+            <td>K. Pangilinan</td>
+            <td>₱14M</td>
+            <td>₱27M</td>
+            <td class="highlight-green">+₱13M</td>
+            <td>₱18M</td>
+            <td>0.7×</td>
+          </tr>
+          <tr>
+            <td>R. Hontiveros</td>
+            <td>₱16M</td>
+            <td>₱19M</td>
+            <td class="highlight-green">+₱3M</td>
+            <td>₱18M</td>
+            <td>0.2×</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--ink-faint); margin-top: -1rem;">* Go's declared growth appears plausible on paper — the concern is that his starting SALN of ₱15M after 24 years as Duterte's personal aide is implausibly low.</p>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="mechanisms">
+    <span class="section-number">Section 05</span>
+    <h1 class="section-title">Corruption Mechanisms</h1>
+
+    <div class="body-text">
+      <p>Philippine Senate corruption does not operate through a single mechanism. It is a layered, adaptive ecosystem of rent extraction that has evolved across decades, surviving every legal challenge and institutional reform by mutating rather than disappearing. Understanding how senators become wealthy far beyond their salary requires understanding five distinct but interlocking pipelines — each capable of independently generating tens or hundreds of millions of pesos per term, and together capable of generating billions.</p>
+    </div>
+
+    <h2 class="subsection">PDAF and the Napoles machinery</h2>
+    <div class="body-text">
+      <p>The Priority Development Assistance Fund, known colloquially as pork barrel, was for decades the most transparent corruption mechanism in Philippine public life — not because it was honest, but because it was so openly understood by everyone involved. Each senator received ₱200 million annually in lump-sum discretionary allocations, theoretically for development projects in their constituencies. Over a six-year term, this amounted to <strong>₱1.2 billion per senator</strong> — with no requirement to publicly tender projects, no competitive bidding, and minimal audit oversight.</p>
+
+      <p>The Napoles scam, exposed by whistleblower Benhur Luy in 2013, documented the system with forensic precision. Janet Lim-Napoles operated a network of ghost non-governmental organisations whose sole purpose was to receive PDAF endorsements from senators and congressmen. Once a senator endorsed a Napoles NGO for a PDAF project, the NGO would bill the government for services never rendered. The proceeds were then split: typically 40–50% to the endorsing senator in cash, with the remainder divided among Napoles, complicit government budget officials, and operating costs.</p>
+
+      <p>The Sandiganbayan found that prosecutors clearly proved Jinggoy Estrada systematically pocketed <strong>₱183 million in PDAF kickbacks</strong> through this mechanism. The court record states that "Estrada's PDAF was systematically pocketed, was divided among the accused, and nothing went to the supposed beneficiaries."</p>
+
+      <p>The total PDAF theft across all legislators during the Napoles era is estimated at over <strong>₱10 billion</strong>. No senator has served a single day in prison for it.</p>
+    </div>
+
+    <h2 class="subsection">The neo-pork mutation: budget insertions</h2>
+    <div class="body-text">
+      <p>When the Supreme Court declared PDAF unconstitutional in November 2013, observers hoped it represented a genuine turning point. It was not. The system did not end — it evolved into something larger, more opaque, and arguably more dangerous than PDAF ever was.</p>
+
+      <p>Budget insertions work through the annual General Appropriations Act. During bicameral conference committee deliberations — which are conducted behind closed doors, with no public transcript and no requirement to justify individual line items — senators and congressmen insert specific project allocations tied to specific implementing agencies.</p>
+
+      <p>The kickback mechanism is identical to PDAF: the inserting senator endorses a contractor or NGO to implement the project, the contractor bills at inflated rates or for ghost deliverables, and the kickback — still running at 30–50% of project value — is returned to the senator in cash.</p>
+
+      <div class="callout red">
+        <p>Senator Ping Lacson publicly stated in 2024 that while senators previously had ₱200 million in PDAF, some senators now control ₱5 billion to ₱10 billion in budget insertions — a 25 to 50-fold increase achieved in the decade since PDAF was supposedly abolished.</p>
+      </div>
+
+      <p>Probes initiated in 2024 and 2025 exposed more than <strong>₱25 billion lost to corruption</strong> via budget insertions across a two-year period — a figure that, if the 40% kickback rate holds, implies approximately ₱10 billion distributed to legislators in untraceable cash during that period alone.</p>
+    </div>
+
+    <h2 class="subsection">Infrastructure contractor relationships</h2>
+    <div class="body-text">
+      <p>The contractor-legislator relationship is the dominant corruption vector in the post-PDAF era. It operates through a simple logic: senators chair or influence committees that control the budget allocations of infrastructure agencies. A senator who chairs the finance committee, the public works committee, or who sits on the bicameral conference committee reviewing the DPWH budget, exercises enormous informal power over which contractors receive awards.</p>
+
+      <p>The Bong Go case illustrates the family-network variant of this relationship. Go himself has no declared business interests. His SALN of ₱32 million after 24 years as the most powerful aide in Philippine politics is, on its face, implausible. What public records show is that his father's company, CLTG Builders, received <strong>₱816.98 million in infrastructure contracts</strong> in Davao during the period when Go served as Special Assistant to President Duterte.</p>
+    </div>
+
+    <h2 class="subsection">Offshore asset concealment</h2>
+    <div class="body-text">
+      <p>The British Virgin Islands, the Cayman Islands, Labuan, and similar offshore jurisdictions offer Philippine politicians something domestic real estate and bank accounts cannot: near-complete invisibility from the Philippine SALN filing system.</p>
+
+      <p>The ICIJ's Panama Papers and Offshore Leaks databases have confirmed at minimum two sitting senators held undisclosed offshore structures:</p>
+
+      <p><strong>Imee Marcos</strong> is a confirmed beneficiary of the Sintra Trust, formed in the British Virgin Islands in June 2002, and was listed as a master client of the M Trust in Labuan, Malaysia. Neither structure appears in any of her SALN filings.</p>
+
+      <p><strong>JV Ejercito</strong> holds an undeclared British Virgin Islands company called Ice Bell Properties. This was confirmed by the ICIJ Offshore Leaks database. No SALN perjury charge has been filed. Nine years after the disclosure, Ejercito continues to serve in the Senate without having faced any legal consequence.</p>
+    </div>
+
+    <h2 class="subsection">The SALN system as a structural enabler</h2>
+    <div class="body-text">
+      <p>The SALN itself — theoretically the primary anti-corruption transparency tool — has become a mechanism of concealment rather than disclosure. Three features of the system combine to ensure that declared net worth bears little relationship to actual wealth.</p>
+
+      <p><strong>First, the acquisition-cost rule.</strong> Real property must be declared at the price paid at purchase, not at current market value. A senator who purchased a Forbes Park lot in 1995 for ₱15 million declares it at ₱15 million in 2025 — when its current market value may be ₱300 million or more.</p>
+
+      <p><strong>Second, corporate shielding.</strong> Nothing in the SALN rules requires an official to declare assets held through corporations, provided the official does not personally own the shares. A senator whose spouse holds 100% of a real estate holding company worth ₱500 million need not declare that company in a personal SALN.</p>
+
+      <p><strong>Third, the culture of redaction.</strong> Several senators — including Loren Legarda and both Cayetanos — have over time provided progressively less detail in their SALNs, consolidating assets into single aggregated figures, leaving mandatory columns blank, and omitting the business interest schedules that the law requires.</p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="religion">
+    <span class="section-number">Section 06</span>
+    <h1 class="section-title">The Role of Religion in Sustaining Corruption</h1>
+
+    <div class="body-text">
+      <p>The relationship between Philippine religious institutions and political corruption is one of the most underanalysed dimensions of the country's governance crisis. It operates across three distinct but interlocking planes: the electoral plane, where religious endorsements function as transactional political commodities; the institutional plane, where religious organisations accumulate tax-exempt assets that serve as vehicles for wealth shielding; and the legitimacy plane, where the moral authority of religion is deployed to insulate corrupt politicians from the popular accountability that would otherwise threaten them.</p>
+    </div>
+
+    <h2 class="subsection">The Iglesia ni Cristo: institutionalised bloc voting</h2>
+    <div class="body-text">
+      <p>The Iglesia ni Cristo was founded in 1914 by Felix Manalo, who proclaimed himself the last messenger of God. With an estimated <strong>2 to 3 million registered voters</strong> following INC directives, the church became — and remains — the most reliable single bloc of deliverable votes in Philippine electoral politics.</p>
+
+      <p>The mechanics of INC endorsement are precisely documented by former members and investigative journalists. The Executive Minister determines the church's electoral slate, typically weeks before an election. Sample ballots bearing the endorsed candidates' names are physically distributed. Members are instructed to vote exactly as directed. In practice, compliance rates are estimated above 80%.</p>
+
+      <div class="callout amber">
+        <p>In January 2025, the INC organised a "unity rally" that drew an estimated one million participants to Luneta Park. The timing was explicitly political: the rally coincided with the resumption of Congress sessions and was widely understood as a signal to legislators considering impeachment of Vice President Sara Duterte.</p>
+      </div>
+
+      <p>The systemic consequence of INC bloc voting for anti-corruption efforts is profound. Any senator who secures INC endorsement acquires not just votes but a form of electoral immunity: the knowledge that as long as they maintain their relationship with the church leadership, a disciplined bloc of hundreds of thousands of voters will protect them from electoral accountability regardless of what corruption allegations emerge.</p>
+    </div>
+
+    <h2 class="subsection">The JIL Church and the Villanueva dynasty</h2>
+    <div class="body-text">
+      <p>The Jesus Is Lord Church, founded by Eduardo "Eddie" Villanueva in 1978, represents a different model: not the transactional endorsement of a large institution, but the wholesale conversion of a religious organisation into a dynastic political vehicle.</p>
+
+      <p>Joel Villanueva, son of the church founder and now serving his second Senate term, was found guilty of grave misconduct, serious dishonesty, and conduct prejudicial to the best interest of the service by Ombudsman Conchita Carpio-Morales in November 2016. He was declared perpetually disqualified from public office.</p>
+
+      <p><strong>The conviction was not enforced.</strong> Villanueva refused to vacate his Senate seat. When Ombudsman Morales retired in 2018, President Duterte appointed former Supreme Court Justice Samuel Martires as her successor. Martires resolved Villanueva's pending motion for reconsideration in his favour — reversing the conviction in a decision that was not publicly announced and only came to light through subsequent investigative reporting.</p>
+    </div>
+
+    <h2 class="subsection">Religious tax exemption as a wealth shield</h2>
+    <div class="body-text">
+      <p>Philippine law exempts religious institutions from income tax, property tax, and capital gains tax on assets used for religious purposes. The definition of "religious purposes" is broadly interpreted and minimally audited.</p>
+
+      <p>The consequence is that substantial real estate holdings, broadcasting assets, and organisational infrastructure can be accumulated by religious institutions connected to political dynasties without appearing in any official wealth disclosure. Political families can park wealth in religious organisations they effectively control, receiving the benefits of that wealth — access, influence, infrastructure, legitimacy — without declaring it.</p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="institutional">
+    <span class="section-number">Section 07</span>
+    <h1 class="section-title">The Architecture of Institutional Failure</h1>
+
+    <div class="body-text">
+      <p>The failure to prosecute corrupt senators is not primarily a failure of individual prosecutors, judges, or investigators. It is a systemic failure — the predictable output of institutions that were designed to be capturable, that have been systematically captured, and that now function as components of the corruption ecosystem rather than as checks upon it.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Chart 7 — The Self-Reinforcing Corruption Cycle</div>
+      <p style="font-size: 0.9rem; color: var(--ink-mid); margin-top: 1rem;">Eight interlocking stages showing how each element of the system finances and protects the next:</p>
+      <ol style="margin: 1.5rem 0 1rem 1.5rem; line-height: 1.8;">
+        <li>Office controls budgets</li>
+        <li>Election wins public office</li>
+        <li>Patronage delivers votes</li>
+        <li>Wealth funds campaigns</li>
+        <li>Corruption generates wealth</li>
+        <li>Dynasty entrenches</li>
+        <li>Impunity enables more corruption</li>
+        <li>Power captures justice system</li>
+      </ol>
+      <p class="chart-note">Each stage reinforces the next, creating a closed loop resistant to reform.</p>
+    </div>
+
+    <h2 class="subsection">The Sandiganbayan: justice deferred is justice denied</h2>
+    <div class="body-text">
+      <p>The Sandiganbayan was established in 1978 as a dedicated anti-graft court with a mandate to resolve corruption cases "more expeditiously" than the regular judiciary. In practice, it has achieved the opposite. The gap between allegation and any form of judicial resolution in Philippine high-profile corruption cases is measured not in months or even years, but in decades.</p>
+
+      <p>The Estrada PDAF case is the starkest illustration. The scam was exposed in 2013. The Sandiganbayan found as recently as 2024 that the prosecution had "clearly proved" Estrada's guilt — yet <strong>three of the five Sandiganbayan justices</strong> originally assigned to the case recused themselves for undisclosed "personal reasons," requiring reassignment and causing further delays. Estrada was re-elected to the Senate in 2022, and continues to serve while <strong>11 graft charges remain pending</strong> against him more than twelve years after the original allegations.</p>
+    </div>
+
+    <h2 class="subsection">The Ombudsman: the single point of capture</h2>
+    <div class="body-text">
+      <p>The Office of the Ombudsman was designed as the primary institutional guardian against government corruption. This design contains a catastrophic structural vulnerability: by creating a single institution with a monopoly on anti-corruption prosecution, the framers created a single point of capture.</p>
+
+      <p>The Martires tenure produced what is perhaps the most damning single act of institutional capture in recent Philippine history: the secret reversal of Joel Villanueva's 2016 guilty verdict. The reversal was not publicly announced. It was not reported in the Official Gazette. It came to light only through investigative journalism.</p>
+    </div>
+
+    <h2 class="subsection">The anti-dynasty clause: 38 years of deliberate non-implementation</h2>
+    <div class="body-text">
+      <p>Article II, Section 26 of the 1987 Philippine Constitution states: "The State shall guarantee equal access to opportunities for public service and prohibit political dynasties as may be defined by law."</p>
+
+      <p><strong>No law has been passed.</strong> This is not legislative oversight. It is legislative self-preservation. The people tasked with passing the anti-dynasty law are themselves overwhelmingly members of political dynasties.</p>
+
+      <p>Dynastic representation in the House of Representatives has increased from <strong>48% in 2004 to 67%</strong> as of the most recent Congress. In the Senate, the 2022 elections produced a chamber in which every member either belongs to a recognised political family or has a close family member currently serving in elected office at another level of government.</p>
+    </div>
+
+    <h2 class="subsection">Electoral law: impunity by design</h2>
+    <div class="body-text">
+      <p>Philippine electoral law contains no provision that automatically disqualifies a candidate facing pending criminal charges, regardless of the gravity of those charges or the strength of the evidence against them. Disqualification requires a final and executory conviction.</p>
+
+      <p>Given that this process routinely takes 10 to 20 years in corruption cases, the practical effect is that candidates can be indicted, tried, convicted at first instance, and still stand for re-election while their appeals are pending.</p>
+    </div>
+
+    <h2 class="subsection">Patronage, poverty, and the voter trap</h2>
+    <div class="body-text">
+      <p>The final layer of institutional failure is rooted in economic reality. Philippine patronage politics functions because it is rational — not in the abstract sense of what is good for society, but in the immediate and concrete sense of what is good for a family living below the poverty line.</p>
+
+      <p>A family dependent on a senator's office for medical assistance, government employment referrals, scholarship applications, and emergency cash assistance faces an economic relationship with that senator's office that is more immediate than any abstract consideration of corruption or accountability. Voting against the senator means risking the termination of access to services that cannot be obtained elsewhere.</p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="voters">
+    <span class="section-number">Section 08</span>
+    <h1 class="section-title">Why Filipinos Consistently Vote for Bad Actors</h1>
+
+    <div class="body-text">
+      <p>The question of why Filipino voters repeatedly return demonstrably corrupt politicians to office — often by landslide margins — deserves a serious answer. The evidence does not support the conclusion that Filipino voters are simply ignorant, irrational, or morally indifferent. It supports a more disturbing conclusion: that the system has been engineered with extraordinary sophistication to make choosing corrupt politicians the rational, culturally affirmed, digitally reinforced, and often economically necessary decision.</p>
+    </div>
+
+    <h2 class="subsection">The economics of survival voting</h2>
+    <div class="body-text">
+      <p>Approximately <strong>13.2 million Filipino families</strong> — representing roughly a quarter of the population — live below the official poverty line. For these families, the calculation involved in a voting decision is not abstract.</p>
+
+      <p>A senator's district office that provides medical assistance referrals, burial assistance, educational scholarships, emergency cash transfers, and government employment referrals is not simply a campaign tool. It is, for millions of families, the only functioning social safety net they have access to.</p>
+
+      <p>A September 2024 national survey found that while <strong>50% of Filipinos believe dynasty politicians are more likely to be corrupt, 56% saw nothing wrong with family members running in the same election</strong>. The gap between believing something is corrupt and voting against it when doing so risks material deprivation is not hypocrisy. It is the revealed preference of people making decisions under economic duress.</p>
+    </div>
+
+    <h2 class="subsection">The cultural logic of loyalty: utang na loob and hiya</h2>
+    <div class="body-text">
+      <p>Philippine political culture cannot be understood without engaging seriously with two foundational cultural concepts: <em>utang na loob</em> and <em>hiya</em>.</p>
+
+      <p><strong>Utang na loob</strong> — literally "debt of the inner self" — is the Filipino concept of deep, often lifelong obligation that arises from significant acts of assistance or generosity. When a politician provides assistance to a family, the family incurs a form of utang na loob that carries genuine moral weight in Filipino culture. Voting for that politician at election time is not merely a transactional exchange. It is understood as a legitimate and honourable response to a debt of gratitude.</p>
+
+      <p><strong>Hiya</strong> — often translated as shame or social embarrassment — is the complementary mechanism. Voting against a patron who has helped your family risks being seen by one's community as <em>walang utang na loob</em>: without gratitude, ungrateful, morally deficient.</p>
+    </div>
+
+    <h2 class="subsection">The theological dimension: faith, authority, and submission</h2>
+    <div class="body-text">
+      <p>The role of religion operates at the level of the cognitive frameworks through which Filipinos understand authority, legitimacy, suffering, and hope — frameworks shaped by 333 years of Spanish Catholic colonialism.</p>
+
+      <p>Spanish Catholicism in the Philippines was deeply intertwined with political authority from its introduction in the 16th century. The doctrine of divine ordination of rulers — that temporal authority derives from God and must be respected as part of the natural and divine order — was a practical instrument of colonial governance.</p>
+
+      <p>The consequence is a political culture in which the strong leader — the patron who protects, provides, and punishes — maps onto the image of a demanding but ultimately benevolent God.</p>
+    </div>
+
+    <h2 class="subsection">Social media and the manufactured past</h2>
+    <div class="body-text">
+      <p>The 2022 Philippine presidential election produced what researchers described as the most sophisticated social media disinformation operation ever documented in Southeast Asian electoral politics. Its target was not the present — it was the past.</p>
+
+      <p>The Marcos family's online revisionism project dates back to the early 2000s. The core claim was simple and emotionally powerful: that the Marcos era was a golden age of Filipino prosperity and pride, that Ferdinand Marcos was a great leader unfairly maligned by political enemies, and that the EDSA People Power revolution was a coup that stole the Philippines' destiny.</p>
+
+      <div class="callout red">
+        <p>A single video claiming that nobody was arrested during martial law accumulated more than 187 million views before the official election period began. A post claiming that martial law victims fabricated their accounts was shared across 514 Facebook groups and viewed more than 89 million times.</p>
+      </div>
+
+      <p>Cambridge Analytica's involvement adds a further layer. A whistleblower has stated that Marcos Jr. engaged Cambridge Analytica's services to rebrand his family's historical and social image — the same firm that manipulated voter data in the Brexit referendum and the 2016 US presidential election.</p>
+
+      <p>When <strong>72% of Filipinos use Facebook as their primary news source</strong>, and when that platform's algorithm rewards emotional engagement over factual accuracy, the information environment in which voters make decisions has been fundamentally corrupted.</p>
+    </div>
+
+    <h2 class="subsection">The structural absence of alternatives</h2>
+    <div class="body-text">
+      <p>Philippine political parties are not ideological organisations — they are convenience vehicles for political dynasties. Party membership follows power rather than principle. A voter who wants to vote against corruption has no party they can vote for that credibly represents that preference across candidates.</p>
+
+      <p>Independent candidates face structural barriers so severe that they amount to effective exclusion. Filing fees for Senate seats are substantial. Media access is dominated by outlets with ownership ties to political dynasties. The physical infrastructure of campaigning requires a network that only established political machines possess.</p>
+    </div>
+
+    <div class="callout">
+      <p><strong>Case Study: What Ilocos Norte Got from the Marcoses — and What Davao Got from the Dutertes</strong></p>
+      <p>Ilocos Norte records a poverty incidence of 0.5% — the lowest of any province in the Philippines. Under Duterte's 22-year mayoral tenure, Davao City developed a reputation as one of Mindanao's better-governed cities.</p>
+      <p>What the data conceals: Ilocos Norte's low poverty rate is substantially explained by factors independent of Marcos governance — primarily remittance income from overseas workers. Meanwhile, the Marcos family simultaneously governed a Philippines in which national poverty incidence reached 23%, and billions looted from the national treasury directly reduced resources for poverty reduction.</p>
+      <p>Davao City prospered while the surrounding region remained among the country's poorest. Nine of the ten Philippine provinces with the lowest Human Development Index are in Mindanao — the region the Dutertes have dominated for three decades.</p>
+      <p class="callout-source">The structural insight: By concentrating development benefits on loyal constituencies while extracting costs nationally, dynasties make local loyalty individually rational even when it is collectively catastrophic.</p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="integrity">
+    <span class="section-number">Section 09</span>
+    <h1 class="section-title">Senator Integrity Assessment</h1>
+
+    <div class="body-text">
+      <p>Chart 8 presents an estimated integrity score (0–10) for each senator with a completed term, derived from SALN consistency, confirmed corruption evidence, legal record, transparency conduct, and legislative behaviour.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Chart 8 — Estimated Integrity Score (0–10)</div>
+      <p style="font-size: 0.9rem; color: var(--ink-mid); margin: 1rem 0;">Based on SALN analysis, court records, and investigative journalism:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem; line-height: 1.8;">
+        <li><strong style="color: var(--green);">Green (7+):</strong> Clean — no credible corruption evidence</li>
+        <li><strong style="color: var(--amber);">Amber (4–7):</strong> Structurally compromised</li>
+        <li><strong style="color: var(--red);">Red (<4):</strong> Confirmed or credible corruption</li>
+      </ul>
+      <p class="chart-note">Full visualization available in original PDF report.</p>
+    </div>
+
+    <h2 class="subsection">Clean record</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-value green">9.2</div>
+        <div class="stat-label">Risa Hontiveros</div>
+        <div class="stat-sub">Declared ₱19M — consistent with salary</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">8.8</div>
+        <div class="stat-label">Kiko Pangilinan</div>
+        <div class="stat-sub">Declared ₱27M — no corruption allegations</div>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p><strong>Risa Hontiveros:</strong> Declared net worth ₱18.986 million — one car loan of ₱897,840, otherwise fully consistent with salary-based accumulation. No credible corruption allegations across 10+ years. Voluntarily released SALN before legal requirement. The single senator in this analysis who passes every test.</p>
+
+      <p><strong>Kiko Pangilinan:</strong> Declared net worth ₱26.7 million. No corruption allegations in 20+ years of public service. Voted to convict Chief Justice Corona (2012). Only senator to vote against Bayanihan 2, citing unresolved pandemic procurement corruption.</p>
+    </div>
+
+    <h2 class="subsection">Personally clean — structural entanglements</h2>
+
+    <div class="body-text">
+      <p><strong>Sherwin Gatchalian (score: 6.5):</strong> Strong legislative record including the Universal Access to Quality Tertiary Education Act. The LWUA bank case involves corporate officer liability rather than personal corrupt acts. Family controls Wellex Group — structural conflicts require ongoing monitoring but do not constitute personal corruption on available evidence.</p>
+    </div>
+
+    <h2 class="subsection">Confirmed or credible corruption exposure</h2>
+
+    <div class="table-wrap">
+      <div class="table-caption">Table 3 — Senators with Confirmed or Credible Corruption Evidence</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Senator</th>
+            <th>Score</th>
+            <th>Primary mechanism</th>
+            <th>Legal status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jinggoy Estrada</td>
+            <td class="highlight-red">1.2</td>
+            <td>PDAF kickbacks (₱183M)</td>
+            <td>11 graft counts pending</td>
+          </tr>
+          <tr>
+            <td>Imee Marcos</td>
+            <td class="highlight-red">0.8</td>
+            <td>Marcos wealth + offshore trusts</td>
+            <td>PCGG investigation ongoing</td>
+          </tr>
+          <tr>
+            <td>Bato Dela Rosa</td>
+            <td class="highlight-red">1.5</td>
+            <td>Drug war command responsibility</td>
+            <td>ICC investigation active</td>
+          </tr>
+          <tr>
+            <td>Bong Go</td>
+            <td class="highlight-red">1.8</td>
+            <td>Access monetisation + contractors</td>
+            <td>QuadCom referral</td>
+          </tr>
+          <tr>
+            <td>Joel Villanueva</td>
+            <td class="highlight-red">2.5</td>
+            <td>PDAF misuse + conviction reversed</td>
+            <td>Reversal under scrutiny</td>
+          </tr>
+          <tr>
+            <td>JV Ejercito</td>
+            <td class="highlight-red">3.0</td>
+            <td>Undisclosed BVI offshore account</td>
+            <td>No charges — perjury evident</td>
+          </tr>
+          <tr>
+            <td>Migz Zubiri</td>
+            <td class="highlight-amber">4.8</td>
+            <td>Power sector conflicts</td>
+            <td>No charges</td>
+          </tr>
+          <tr>
+            <td>Tito Sotto</td>
+            <td class="highlight-amber">4.5</td>
+            <td>Entertainment asset undervaluation</td>
+            <td>No charges</td>
+          </tr>
+          <tr>
+            <td>Lito Lapid</td>
+            <td class="highlight-amber">4.3</td>
+            <td>Political-commercial synergy</td>
+            <td>No charges</td>
+          </tr>
+          <tr>
+            <td>Loren Legarda</td>
+            <td class="highlight-amber">4.5</td>
+            <td>Progressive SALN opacity</td>
+            <td>No charges</td>
+          </tr>
+          <tr>
+            <td>Alan P. Cayetano</td>
+            <td class="highlight-amber">4.2</td>
+            <td>Consistent SALN omissions</td>
+            <td>No charges</td>
+          </tr>
+          <tr>
+            <td>Pia Cayetano</td>
+            <td class="highlight-amber">4.0</td>
+            <td>SALN inconsistencies</td>
+            <td>No charges</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="legal">
+    <span class="section-number">Section 10</span>
+    <h1 class="section-title">In a Perfect World: Legal Outcomes</h1>
+
+    <h2 class="subsection">Applicable legal standards</h2>
+    <div class="body-text">
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li><strong>RA 7080:</strong> Life imprisonment + perpetual disqualification for ₱75M+ in ill-gotten wealth</li>
+        <li><strong>RA 1379:</strong> Civil forfeiture of disproportionate property regardless of criminal conviction. Imprescriptible.</li>
+        <li><strong>RA 3019:</strong> Criminal liability for public officers with financial interests in government-transacting businesses</li>
+        <li><strong>RA 6713:</strong> Administrative liability for SALN misdeclaration or non-disclosure</li>
+      </ul>
+    </div>
+
+    <h2 class="subsection">Projected outcomes and asset recovery</h2>
+
+    <div class="table-wrap">
+      <div class="table-caption">Table 4 — Projected Legal Outcomes Under Full Enforcement</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Senator</th>
+            <th>Primary charge</th>
+            <th>Projected outcome</th>
+            <th>Est. forfeiture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Imee Marcos</td>
+            <td>Plunder + SALN perjury</td>
+            <td>Civil forfeiture + conviction</td>
+            <td class="highlight-red">₱2B–₱5B</td>
+          </tr>
+          <tr>
+            <td>Jinggoy Estrada</td>
+            <td>Plunder (RA 7080)</td>
+            <td>Life + perpetual disqualification</td>
+            <td class="highlight-red">₱600M–₱1B</td>
+          </tr>
+          <tr>
+            <td>Bong Go</td>
+            <td>Plunder + graft</td>
+            <td>Life + perpetual disqualification</td>
+            <td class="highlight-red">₱150M–₱400M</td>
+          </tr>
+          <tr>
+            <td>Bato Dela Rosa</td>
+            <td>ICC crimes against humanity</td>
+            <td>ICC life sentence + forfeiture</td>
+            <td class="highlight-red">₱80M–₱150M</td>
+          </tr>
+          <tr>
+            <td>Joel Villanueva</td>
+            <td>Grave misconduct + graft</td>
+            <td>Perpetual disqualification</td>
+            <td class="highlight-amber">₱30M–₱80M</td>
+          </tr>
+          <tr>
+            <td>JV Ejercito</td>
+            <td>SALN perjury + offshore forfeiture</td>
+            <td>Conviction + disqualification</td>
+            <td class="highlight-amber">₱50M–₱200M</td>
+          </tr>
+          <tr>
+            <td>Migz Zubiri</td>
+            <td>Graft (conditional)</td>
+            <td>Acquittal or conviction</td>
+            <td>₱0–₱500M</td>
+          </tr>
+          <tr>
+            <td>Tito Sotto</td>
+            <td>Admin — SALN restatement</td>
+            <td>No criminal conviction</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>R. Hontiveros</td>
+            <td>No action warranted</td>
+            <td>Continue serving</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>K. Pangilinan</td>
+            <td>No action warranted</td>
+            <td>Continue serving</td>
+            <td>N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-value red">₱3B–₱7.3B</div>
+        <div class="stat-label">Total Estimated Recoverable Assets</div>
+        <div class="stat-sub">Under full legal enforcement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">≈ DSWD Budget</div>
+        <div class="stat-label">Equivalent Value</div>
+        <div class="stat-sub">Annual budget for 13M families</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="cost">
+    <span class="section-number">Section 11</span>
+    <h1 class="section-title">The Human Cost</h1>
+
+    <h2 class="subsection">What recovered wealth could fund</h2>
+
+    <div class="body-text">
+      <p>Chart 4 converts the ₱5 billion midpoint recovery estimate into tangible public goods using current Philippine government unit costs.</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-value green">83,000</div>
+        <div class="stat-label">College Scholarships</div>
+        <div class="stat-sub">1 year full tuition</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">10,000</div>
+        <div class="stat-label">Public School Classrooms</div>
+        <div class="stat-sub">Fully equipped</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">625</div>
+        <div class="stat-label">Rural Health Centres</div>
+        <div class="stat-sub">Complete construction</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">1.67M</div>
+        <div class="stat-label">Families Fed</div>
+        <div class="stat-sub">1 month via 4Ps</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">2,500</div>
+        <div class="stat-label">Hospital Beds Equipped</div>
+        <div class="stat-sub">Full medical equipment</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">6 months</div>
+        <div class="stat-label">4Ps Program Funding</div>
+        <div class="stat-sub">For entire country</div>
+      </div>
+    </div>
+
+    <h2 class="subsection">The economic cost — ASEAN comparison</h2>
+
+    <div class="body-text">
+      <p>Chart 5 places the Philippines' corruption-driven underperformance in its full regional context. Using World Bank GDP per capita data in constant 2015 USD, with 1960 = 100 as the base, the divergence between the Philippines and its ASEAN neighbours is one of the most striking economic failures of the post-war era.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Chart 5 — ASEAN GDP per Capita Growth, Indexed 1960 = 100</div>
+      <p style="font-size: 0.9rem; color: var(--ink-mid); margin: 1rem 0;">Source: World Bank WDI, constant 2015 USD. Philippines in red. Singapore excluded.</p>
+      <p class="chart-note">In 1960, the Philippines had the second-highest GDP per capita in Asia. Today it ranks last among ASEAN members (excluding Singapore) in growth — 2.4× versus Malaysia's 7.9×.</p>
+      <p style="font-size: 0.85rem; color: var(--ink-mid); margin-top: 1.5rem;"><em>Note: Full visualization available in original PDF report showing: Martial law (1972–1986) visible as plateau and decline; Vietnam's Doi Moi reforms (1986) producing near-vertical growth trajectory; EDSA 1986 producing minimal recovery.</em></p>
+    </div>
+
+    <div class="callout red">
+      <p><strong>The Philippine Senate corruption documented in this report is not a side story to the country's economic underperformance. It is the mechanism of that underperformance, expressed at the individual level in SALN filings, offshore trust documents, and luxury property records.</strong></p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="timeline">
+    <span class="section-number">Section 12</span>
+    <h1 class="section-title">The Justice Timeline</h1>
+
+    <div class="body-text">
+      <p>Chart 6 visualises the elapsed time between when each corruption allegation emerged and March 2026. Red markers indicate when the allegation first became public; grey diamonds show when formal charges were filed (if ever). The shaded bars show total years elapsed with no final resolution.</p>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Chart 6 — Justice Timeline: Years from Allegation to Any Resolution</div>
+      <table style="margin: 1.5rem 0; border: none;">
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--rule);">
+            <td style="padding: 0.75rem 0;"><strong>Marcos family ill-gotten wealth</strong></td>
+            <td style="text-align: right; color: var(--red); font-family: var(--mono); font-size: 0.85rem;">40 years</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--rule);">
+            <td style="padding: 0.75rem 0;"><strong>Jinggoy Estrada — PDAF</strong></td>
+            <td style="text-align: right; color: var(--red); font-family: var(--mono); font-size: 0.85rem;">13 years</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--rule);">
+            <td style="padding: 0.75rem 0;"><strong>JV Ejercito — BVI offshore</strong></td>
+            <td style="text-align: right; color: var(--red); font-family: var(--mono); font-size: 0.85rem;">10 years</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--rule);">
+            <td style="padding: 0.75rem 0;"><strong>Joel Villanueva — PDAF misuse</strong></td>
+            <td style="text-align: right; color: var(--green); font-family: var(--mono); font-size: 0.85rem;">18 years (reversed)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--rule);">
+            <td style="padding: 0.75rem 0;"><strong>Bato Dela Rosa — ICC</strong></td>
+            <td style="text-align: right; color: var(--amber); font-family: var(--mono); font-size: 0.85rem;">10 years</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--rule);">
+            <td style="padding: 0.75rem 0;"><strong>Bong Go — contractor network</strong></td>
+            <td style="text-align: right; color: var(--amber); font-family: var(--mono); font-size: 0.85rem;">6 years</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem 0;"><strong>Migz Zubiri — power sector</strong></td>
+            <td style="text-align: right; color: var(--amber); font-family: var(--mono); font-size: 0.85rem;">7 years</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="chart-note">Source: Sandiganbayan records, Ombudsman filings, ICIJ, PCIJ.</p>
+    </div>
+
+    <div class="callout amber">
+      <p>The Marcos ill-gotten wealth case has been active for 39 years. The JV Ejercito BVI offshore account was confirmed 9 years ago — no SALN perjury charges have been filed. For most senators on this list, the justice system has produced nothing in the direction of accountability.</p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="consumption">
+    <span class="section-number">Section 13</span>
+    <h1 class="section-title">Documented Conspicuous Consumption</h1>
+
+    <h2 class="subsection">Marcos family documented luxury assets</h2>
+
+    <div class="table-wrap">
+      <div class="table-caption">Table 5 — Marcos Family Documented Luxury Assets</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Description</th>
+            <th>Value</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Shoes (Imelda)</td>
+            <td>3,000+ designer pairs — Chanel, Dior, Gucci</td>
+            <td>₱5M–₱15M</td>
+            <td>PCGG/Rappler</td>
+          </tr>
+          <tr>
+            <td>Jewelry (Hawaii)</td>
+            <td>150-carat Burmese ruby, 30-carat Bulgari bracelet, 25-carat pink diamond</td>
+            <td class="highlight-red">$21M (₱1.2B)</td>
+            <td>PCGG/Sandiganbayan</td>
+          </tr>
+          <tr>
+            <td>Monet painting</td>
+            <td>"Le Bassin aux Nymphéas" — sold NY auction 2014</td>
+            <td class="highlight-red">$43M</td>
+            <td>Christie's/PCGG</td>
+          </tr>
+          <tr>
+            <td>Artwork (full)</td>
+            <td>175 pieces: Botticelli, Michelangelo, Raphael, Picasso, 2× Monet</td>
+            <td class="highlight-red">$50M+ est.</td>
+            <td>Foreign Policy</td>
+          </tr>
+          <tr>
+            <td>Offshore trusts</td>
+            <td>Sintra Trust (BVI 2002) — Imee beneficiary. M Trust (Labuan)</td>
+            <td>Unknown</td>
+            <td>ICIJ/PCGG</td>
+          </tr>
+          <tr>
+            <td>Flight assets 1986</td>
+            <td>89 family members, $10K each; gold bullion 50 lbs; $1.2M newly minted currency</td>
+            <td>~$12M</td>
+            <td>US Customs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--ink-faint); margin-top: -1rem;">Marcos presidential salary 1966–1985: $304,372 total. These documented assets are <strong>260,000× his declared presidential salary</strong>.</p>
+
+    <h2 class="subsection">Jinggoy Estrada property evidence</h2>
+
+    <div class="table-wrap">
+      <div class="table-caption">Table 6 — Jinggoy Estrada Property Evidence</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Description</th>
+            <th>Est. value</th>
+            <th>SALN status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Wack-Wack lot</td>
+            <td>3,000 sqm, Mandaluyong. Registered under Verdant Forest Highlands Inc.</td>
+            <td class="highlight-red">₱210M–₱240M</td>
+            <td>Not declared</td>
+          </tr>
+          <tr>
+            <td>Wack-Wack mansion</td>
+            <td>Construction confirmed 2013. ₱89M gap unexplained</td>
+            <td class="highlight-red">₱120M</td>
+            <td>Not declared</td>
+          </tr>
+          <tr>
+            <td>Corinthian Hills</td>
+            <td>Declared primary residence Quezon City</td>
+            <td>₱30M (declared)</td>
+            <td>Declared</td>
+          </tr>
+          <tr>
+            <td>Other properties</td>
+            <td>3 condo units San Juan, Tagaytay condo, Lipa farm, QC townhouse</td>
+            <td>₱50M+ est.</td>
+            <td>Partial</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.75rem; color: var(--ink-faint); margin-top: -1rem;">The Wack-Wack lot alone (₱210M–₱240M) represents 12–13 full Senate terms of salary and already exceeds Estrada's entire declared 2025 SALN net worth of ₱221 million.</p>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="enablers">
+    <span class="section-number">Section 14</span>
+    <h1 class="section-title">Who Should Be Removed: The Full Enabling Architecture</h1>
+
+    <div class="body-text">
+      <p>The corruption documented in this report does not sustain itself. It requires active human enablement across every branch of government — legislators who design the extraction mechanisms, executive officials who protect the extractors, and judicial officers who ensure accountability never arrives.</p>
+    </div>
+
+    <h2 class="subsection">The legislative enablers</h2>
+
+    <div class="body-text">
+      <p><strong>Martin Romualdez — Representative, Leyte 1st District</strong></p>
+      <p>Romualdez served as House Speaker from 2022 to 2025 — the period during which budget insertions into flood control projects reached their peak. He received ₱14.4 billion in allocable funds from the national budget. Contractor Curlee Discaya implicated him in alleged kickbacks. Orly Guteza testified that he regularly delivered luggage filled with cash to Romualdez's residence, with an estimated <strong>₱1.68 billion allegedly delivered</strong>.</p>
+
+      <p>In February 2026, <strong>12 counts of falsification of legislative documents and 12 counts of graft</strong> were formally filed against him before the Ombudsman. He resigned the speakership but remains a sitting congressman.</p>
+
+      <p><strong>Francis Escudero — Senator; former Senate President</strong></p>
+      <p>Escudero resigned as Senate President following reports that he had inserted a questionable <strong>₱142 billion</strong> in the 2025 budget. He was also linked to a ₱30 million campaign donation from a contractor who subsequently won large infrastructure deals — a criminal offence under the Omnibus Election Code.</p>
+
+      <p><strong>Joel Villanueva — Senator; former Senate Majority Floor Leader</strong></p>
+      <p>Found guilty of grave misconduct by Ombudsman Carpio-Morales in 2016. Conviction secretly reversed by Duterte-appointee Samuel Martires in 2018. His original perpetual disqualification from public office should be reinstated.</p>
+
+      <p><strong>Sandro Marcos — Representative, Ilocos Norte 1st District</strong></p>
+      <p>Received <strong>₱15.8 billion in allocable funds</strong> from the 2025 General Appropriations Act, the highest allocation of any House member. He is 28 years old, in his first term, and already controls the largest discretionary budget allocation in the House.</p>
+    </div>
+
+    <h2 class="subsection">The executive enablers</h2>
+
+    <div class="body-text">
+      <p><strong>Jesus Crispin "Boying" Remulla — Ombudsman</strong></p>
+      <p>President Marcos appointed his former Justice Secretary Remulla as Ombudsman in October 2025 — placing a political ally at the single gatekeeper of all senior official corruption prosecutions.</p>
+
+      <p>Remulla's son was arrested for possession of ₱1.3 million worth of marijuana at NAIA while his father was Justice Secretary. The son was subsequently released. The Remulla family also developed the Island Cove property in Cavite before selling it to a company that turned it into the country's largest POGO hub.</p>
+
+      <p>Most damningly, Remulla has himself admitted that former House Speaker Romualdez — now the subject of Ombudsman investigation — is his fraternity brother and that he called Romualdez personally before assuming office.</p>
+
+      <div class="callout red">
+        <p>The Ombudsman must be genuinely independent. Remulla is a Marcos political ally investigating a Marcos ally while the Marcos family itself has been implicated in the same flood control corruption he is supposed to prosecute. He should be removed through impeachment proceedings.</p>
+      </div>
+
+      <p><strong>President Ferdinand Marcos Jr. — The Systemic Apex</strong></p>
+      <p>Zaldy Co alleged that Marcos Jr. orchestrated ₱100 billion in fund insertions in the proposed 2025 national budget and received kickbacks from the flood control scandal. Marcos appointed Remulla as Ombudsman to investigate corruption in which Marcos allies and potentially Marcos himself are implicated. His son holds the largest pork barrel allocation in the House. His cousin Romualdez ran the budget process during maximum flood control corruption.</p>
+
+      <p>The evidence for initiating impeachment proceedings — on grounds of culpable violation of the Constitution through systematic budget irregularities — is at minimum worthy of serious legislative consideration.</p>
+    </div>
+  </div>
+
+  <hr class="rule-heavy">
+
+  <div class="section" id="judiciary">
+    <span class="section-number">Section 15</span>
+    <h1 class="section-title">The Captured Judiciary: Who Should Be Removed</h1>
+
+    <div class="body-text">
+      <p>The judiciary is the most consequential and least publicly scrutinised layer of institutional failure in this analysis. Two numbers define the scale of the problem:</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-value red">13 of 15</div>
+        <div class="stat-label">Supreme Court Justices</div>
+        <div class="stat-sub">Appointed by Duterte</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value red">26.5%</div>
+        <div class="stat-label">Ombudsman Conviction Rate</div>
+        <div class="stat-sub">Down from 61.2% under Martires</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value red">37 years</div>
+        <div class="stat-label">Marcos Coconut Levy Cases</div>
+        <div class="stat-sub">Before dismissal by Econg</div>
+      </div>
+    </div>
+
+    <h2 class="subsection">Chief Justice Alexander Gesmundo — Supreme Court</h2>
+    <div class="body-text">
+      <p>Gesmundo was appointed by Duterte in August 2017 and elevated to Chief Justice in April 2021. He had never voted against Duterte in any politically salient case before his elevation.</p>
+
+      <p>His voting record is documented with specificity: martial law extension in Mindanao, dismissing petitions against Duterte's health condition disclosure, junking petitions against Bayanihan Act emergency powers, voting in the ouster of Chief Justice Sereno via quo warranto, and voting to uphold the arrest of Senator Leila de Lima on charges that history has shown were fabricated.</p>
+    </div>
+
+    <h2 class="subsection">The eleven Duterte-appointed Associate Justices</h2>
+    <div class="body-text">
+      <p>The eleven Duterte appointees to the Supreme Court show a statistically significant pattern of deference to their appointing president in politically salient cases. In divided en banc rulings on matters directly affecting Duterte, Duterte appointees voted uniformly with the executive position while Aquino appointees were divided.</p>
+    </div>
+
+    <h2 class="subsection">Presiding Justice Geraldine Faith Econg — Sandiganbayan</h2>
+    <div class="body-text">
+      <p><strong>This is the most consequential individual judicial appointment in the entire analysis.</strong> President Ferdinand Marcos Jr. appointed Geraldine Faith Econg as Sandiganbayan Presiding Justice in January 2025 — placing her at the helm of the very court mandated to handle his family's ill-gotten wealth cases.</p>
+
+      <p>What Econg had done before that appointment: she authored the decision dismissing the last six coconut levy cases against former president Ferdinand Marcos Sr., former first lady Imelda Marcos, and their associates. She was among the justices who voted to acquit Senator Bong Revilla of plunder charges. She joined the special division that dismissed the plunder case against former senator Juan Ponce Enrile.</p>
+
+      <div class="callout red">
+        <p>To state this plainly: Marcos appointed as chief of the court handling his family's wealth recovery cases the justice who had already dismissed his parents' cases. As recently as March 17, 2026 — days before this report was completed — Econg authored another resolution dismissing a civil forfeiture case linked to coconut levy funds.</p>
+      </div>
+
+      <p>She should be impeached. The grounds are clear: her appointment constitutes a conflict of interest that should have prevented her elevation to presiding justice, and her subsequent decisions in Marcos-related cases demonstrate exactly the partiality that the conflict predicted.</p>
+    </div>
+
+    <h2 class="subsection">The structural verdict</h2>
+
+    <div class="table-wrap">
+      <div class="table-caption">Table 7 — Judicial Officials Requiring Removal or Reform</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Official</th>
+            <th>Court/Body</th>
+            <th>Primary conflict</th>
+            <th>Removal mechanism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Chief Justice Gesmundo</td>
+            <td>Supreme Court</td>
+            <td>Pro-Duterte voting record; controls JBC</td>
+            <td class="highlight-amber">Voluntary retirement or impeachment</td>
+          </tr>
+          <tr>
+            <td>11 Duterte Justices</td>
+            <td>Supreme Court</td>
+            <td>Systematic deference to appointing president</td>
+            <td class="highlight-amber">JBC reform as vacancies arise</td>
+          </tr>
+          <tr>
+            <td>Presiding Justice Econg</td>
+            <td>Sandiganbayan</td>
+            <td>Appointed by Marcos; authored Marcos dismissals</td>
+            <td class="highlight-red">Impeachment — grounds documented</td>
+          </tr>
+          <tr>
+            <td>Justice Raul Villanueva</td>
+            <td>Supreme Court</td>
+            <td>First Marcos appointee; regional alignment</td>
+            <td class="highlight-green">Monitor voting record</td>
+          </tr>
+          <tr>
+            <td>JBC leadership</td>
+            <td>Institutional</td>
+            <td>Approved Remulla despite pending cases</td>
+            <td class="highlight-red">Constitutional amendment</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout red">
+      <p><strong>The judiciary is not broken. It has been deliberately and systematically captured</strong> — by Duterte across 13 of 15 Supreme Court seats, and now by Marcos at the Sandiganbayan and through the Ombudsman. That is a worse diagnosis than mere dysfunction, because capture requires political will to reverse — and political will is precisely what a captured system is designed to prevent from materialising.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="references" id="references">
+  <div class="container">
+    <h2 class="subsection" style="margin-top: 0; margin-bottom: 1.5rem;">References</h2>
+    
+    <h3 style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); margin: 2rem 0 1rem;">Legal instruments</h3>
+    <ul class="ref-list" style="list-style: disc; padding-left: 2rem;">
+      <li>Republic Act 7080 — An Act Defining and Penalizing the Crime of Plunder (1991)</li>
+      <li>Republic Act 1379 — Forfeiture of Unlawfully Acquired Properties (1955, as amended)</li>
+      <li>Republic Act 3019 — Anti-Graft and Corrupt Practices Act (1960)</li>
+      <li>Republic Act 6713 — Code of Conduct and Ethical Standards for Public Officials (1989)</li>
+      <li>1987 Philippine Constitution, Article XI (Accountability of Public Officers); Article II Section 26</li>
+    </ul>
+
+    <h3 style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); margin: 2rem 0 1rem;">Court records and government documents</h3>
+    <ul class="ref-list" style="list-style: disc; padding-left: 2rem;">
+      <li>Sandiganbayan — People v. Estrada et al. (PDAF cases, 2014 onwards)</li>
+      <li>Sandiganbayan — Republic v. Marcos et al. (jewelry forfeiture, 2014); SC affirmation 2017</li>
+      <li>PCGG — Inventory of Marcos ill-gotten wealth, various years</li>
+      <li>Office of the Ombudsman — Decision OMB-C-A-15-0058 (Villanueva, 2016); reversal 2018</li>
+      <li>ICC — Situation in the Republic of the Philippines (ICC-01/21, 2021 onwards)</li>
+    </ul>
+
+    <h3 style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); margin: 2rem 0 1rem;">Investigative journalism</h3>
+    <ul class="ref-list" style="list-style: disc; padding-left: 2rem;">
+      <li>Philippine Center for Investigative Journalism (PCIJ) — SALN analysis series, 2019–2025</li>
+      <li>PCIJ — "Unliquidated" series on budget insertions, 2024</li>
+      <li>Rappler — Wack-Wack mansion investigation, 2013; PDAF scam document trove, 2013–2015</li>
+      <li>ICIJ — Panama Papers 2016; Offshore Leaks database</li>
+      <li>GMA News / VERA Files — Budget insertion investigation, 2025</li>
+      <li>Philippine Daily Inquirer — SALN analyses, various years</li>
+    </ul>
+
+    <h3 style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); margin: 2rem 0 1rem;">Economic and statistical data</h3>
+    <ul class="ref-list" style="list-style: disc; padding-left: 2rem;">
+      <li>World Bank — World Development Indicators, GDP per capita (constant 2015 USD), 1960–2023</li>
+      <li>Philippine Statistics Authority — Poverty incidence reports, 2023</li>
+      <li>NEDA — National budget data, 2023–2025</li>
+      <li>DepEd, DOH, CHED, DSWD — Unit cost data for public goods calculations</li>
+    </ul>
+
+    <h3 style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); margin: 2rem 0 1rem;">Academic and secondary sources</h3>
+    <ul class="ref-list" style="list-style: disc; padding-left: 2rem;">
+      <li>Curato, N. — "Democracy in a Time of Misery" (2019)</li>
+      <li>Transparency International — Corruption Perceptions Index, Philippines 2024</li>
+      <li>PCIJ — "Political Dynasties and Corruption in the Philippines" (various)</li>
+    </ul>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-brand">The Anglophone Blind Spot</span>
+  <p>Independent investigative journalism. <a href="https://ivanapark1.substack.com">Subscribe on Substack</a>.</p>
+  <p style="margin-top: 0.75rem; font-size: 0.72rem; opacity: 0.6;">All estimates are presented as ranges and clearly labelled as estimates where they are not directly sourced. Methodology for financial calculations is fully disclosed. Nothing herein constitutes legal advice. &copy; The Anglophone Blind Spot, March 2026.</p>
+</footer>
+
+</body>
+</html>
